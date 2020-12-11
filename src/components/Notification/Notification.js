@@ -56,7 +56,7 @@ export default function Notification({ variant, ...props }) {
 
   return (
     <div
-      className={(classes.notificationContainer, props.className, {
+      className={classnames(classes.notificationContainer, props.className, {
         [classes.notificationContained]: variant === "contained",
         [classes.notificationContainedShadowless]: props.shadowless,
       })}
@@ -89,7 +89,7 @@ export default function Notification({ variant, ...props }) {
             [classes.containedTypography]: variant === "contained",
           })}
           variant={props.typographyVariant}
-          size={variant !== "contained" && !props.typographyVariant && "md"}
+          size={"md"}
         >
           {props.message}
         </Typography>

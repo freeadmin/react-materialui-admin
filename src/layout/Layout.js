@@ -30,49 +30,51 @@ function Layout(props) {
 
   return (
     <div className={classes.root}>
-      <>
-        <Navbar history={props.history} />
-        <div className={classnames(classes.content)}>
-          <div className={classes.fakeToolbar} />
-          <Box
-            mt={5}
-            width={"100%"}
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent="space-between"
-          >
-            <div>
-              <Copyright />
-            </div>
-            <div>
-              <Link
-                color={"primary"}
-                href={"https://flatlogic.com/"}
-                target={"_blank"}
-                className={classes.link}
-              >
-                Flatlogic
-              </Link>
-              <Link
-                color={"primary"}
-                href={"https://flatlogic.com/about"}
-                target={"_blank"}
-                className={classes.link}
-              >
-                About Us
-              </Link>
-              <Link
-                color={"primary"}
-                href={"https://flatlogic.com/blog"}
-                target={"_blank"}
-                className={classes.link}
-              >
-                Blog
-              </Link>
-            </div>
+      <Navbar history={props.history} />
+      <div className={classnames(classes.content)}>
+        <div className={classes.fakeToolbar} />
+        <Box
+          mt={5}
+          width={"100%"}
+          display={"flex"}
+          alignItems={"center"}
+          justifyContent="center"
+        >
+          <Box>
+            <Copyright />
           </Box>
-        </div>
-      </>
+          <Box ml={5}>
+            <Link
+              color={"primary"}
+              href={"https://flatlogic.com/"}
+              target={"_blank"}
+              className={classes.link}
+            >
+              Flatlogic
+            </Link>
+          </Box>
+          <Box ml={5}> 
+            <Link
+              color={"primary"}
+              href={"https://flatlogic.com/about"}
+              target={"_blank"}
+              className={classes.link}
+            >
+              About Us
+            </Link>
+          </Box>
+          <Box ml={5}>
+            <Link
+              color={"primary"}
+              href={"https://flatlogic.com/blog"}
+              target={"_blank"}
+              className={classes.link}
+            >
+              Blog
+            </Link>
+          </Box>
+        </Box>
+      </div>
     </div>
   );
 }
