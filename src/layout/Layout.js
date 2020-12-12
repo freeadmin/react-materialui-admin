@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import classnames from "classnames";
+import clsx from "clsx";
 import { Box, Link } from "@material-ui/core";
 //import Icon from "@mdi/react";
 
@@ -31,7 +31,7 @@ function Layout(props) {
   return (
     <div className={classes.root}>
       <Navbar history={props.history} />
-      <div className={classnames(classes.content)}>
+      <div className={clsx(classes.content)}>
         <div className={classes.fakeToolbar} />
         <Box
           mt={5}

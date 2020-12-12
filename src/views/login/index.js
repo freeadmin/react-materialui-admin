@@ -10,7 +10,9 @@ import {
   Fade,
 } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
-import classnames from "classnames";
+import clsx from "clsx";
+
+import Copyright from "../../components/Copyright";
 
 // styles
 import useStyles from "./styles";
@@ -22,7 +24,10 @@ import google from "../../assets/google.svg";
 // context
 import { useUserDispatch, loginUser } from "../../context/UserContext";
 
+import useTitle from "../../utils/title";
+
 function Login(props) {
+  useTitle((oTtile) => `Login - ${oTtile}`);
   var classes = useStyles();
 
   // global
@@ -82,7 +87,7 @@ function Login(props) {
                   },
                 }}
                 value={loginValue}
-                onChange={e => setLoginValue(e.target.value)}
+                onChange={(e) => setLoginValue(e.target.value)}
                 margin="normal"
                 placeholder="Email Adress"
                 type="email"
@@ -97,7 +102,7 @@ function Login(props) {
                   },
                 }}
                 value={passwordValue}
-                onChange={e => setPasswordValue(e.target.value)}
+                onChange={(e) => setPasswordValue(e.target.value)}
                 margin="normal"
                 placeholder="Password"
                 type="password"
@@ -160,7 +165,7 @@ function Login(props) {
                   },
                 }}
                 value={nameValue}
-                onChange={e => setNameValue(e.target.value)}
+                onChange={(e) => setNameValue(e.target.value)}
                 margin="normal"
                 placeholder="Full Name"
                 type="text"
@@ -175,7 +180,7 @@ function Login(props) {
                   },
                 }}
                 value={loginValue}
-                onChange={e => setLoginValue(e.target.value)}
+                onChange={(e) => setLoginValue(e.target.value)}
                 margin="normal"
                 placeholder="Email Adress"
                 type="email"
@@ -190,7 +195,7 @@ function Login(props) {
                   },
                 }}
                 value={passwordValue}
-                onChange={e => setPasswordValue(e.target.value)}
+                onChange={(e) => setPasswordValue(e.target.value)}
                 margin="normal"
                 placeholder="Password"
                 type="password"
@@ -233,7 +238,7 @@ function Login(props) {
               </div>
               <Button
                 size="large"
-                className={classnames(
+                className={clsx(
                   classes.googleButton,
                   classes.googleButtonCreating,
                 )}
@@ -244,9 +249,9 @@ function Login(props) {
             </React.Fragment>
           )}
         </div>
-        <Typography color="primary" className={classes.copyright}>
-        © 2014-{new Date().getFullYear()} <a style={{ textDecoration: 'none', color: 'inherit' }} href="https://flatlogic.com" rel="noopener noreferrer" target="_blank">Flatlogic</a>, LLC. All rights reserved.
-        </Typography>
+        <div className={classes.copyright}>
+          <Copyright />
+        </div>
       </div>
     </Grid>
   );

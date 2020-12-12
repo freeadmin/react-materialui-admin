@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 export default function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      &copy; {new Date().getFullYear()} React MaterialUI Admin, FreeAdmin.
+      &copy; {new Date().getFullYear()} React MaterialUI Admin, FreeAdmin. MIT Licensed.
     </Typography>
   );
 }

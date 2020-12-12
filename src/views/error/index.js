@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Paper, Typography, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import classnames from "classnames";
+import clsx from "clsx";
 
 // styles
 import useStyles from "./styles";
@@ -24,7 +24,7 @@ export default function Error() {
         <Typography
           variant="h1"
           color="primary"
-          className={classnames(classes.textRow, classes.errorCode)}
+          className={clsx(classes.textRow, classes.errorCode)}
         >
           404
         </Typography>
@@ -35,7 +35,7 @@ export default function Error() {
           variant="h6"
           color="text"
           colorBrightness="secondary"
-          className={classnames(classes.textRow, classes.safetyText)}
+          className={clsx(classes.textRow, classes.safetyText)}
         >
           But we're here to bring you back to safety
         </Typography>

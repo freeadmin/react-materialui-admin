@@ -18,7 +18,7 @@ import {
   Send as SendIcon,
   ArrowBack as ArrowBackIcon,
 } from "@material-ui/icons";
-import classNames from "classnames";
+import clsx from "clsx";
 
 // styles
 import useStyles from "./styles";
@@ -104,7 +104,7 @@ export default function Navbar(props) {
         <IconButton
           color="inherit"
           onClick={() => {}}
-          className={classNames(
+          className={clsx(
             classes.headerMenuButtonSandwich,
             classes.headerMenuButtonCollapse,
           )}
@@ -112,7 +112,7 @@ export default function Navbar(props) {
           {false ? (
             <ArrowBackIcon
               classes={{
-                root: classNames(
+                root: clsx(
                   classes.headerIcon,
                   classes.headerIconCollapse,
                 ),
@@ -121,7 +121,7 @@ export default function Navbar(props) {
           ) : (
             <MenuIcon
               classes={{
-                root: classNames(
+                root: clsx(
                   classes.headerIcon,
                   classes.headerIconCollapse,
                 ),
@@ -130,7 +130,7 @@ export default function Navbar(props) {
           )}
         </IconButton>
         <Typography variant="h6" weight="medium" className={classes.logotype}>
-          React Material Admin
+          React MaterialUI Admin
         </Typography>
         <div className={classes.grow} />
         <Button
@@ -143,12 +143,12 @@ export default function Navbar(props) {
           Unlock full version
         </Button>
         <div
-          className={classNames(classes.search, {
+          className={clsx(classes.search, {
             [classes.searchFocused]: isSearchOpen,
           })}
         >
           <div
-            className={classNames(classes.searchIcon, {
+            className={clsx(classes.searchIcon, {
               [classes.searchIconOpened]: isSearchOpen,
             })}
             onClick={() => setSearchOpen(!isSearchOpen)}
@@ -237,7 +237,7 @@ export default function Navbar(props) {
                 </Typography>
               </div>
               <div
-                className={classNames(
+                className={clsx(
                   classes.messageNotificationSide,
                   classes.messageNotificationBodySide,
                 )}
@@ -302,7 +302,7 @@ export default function Navbar(props) {
             </Typography>
           </div>
           <MenuItem
-            className={classNames(
+            className={clsx(
               classes.profileMenuItem,
               classes.headerMenuItem,
             )}
@@ -310,7 +310,7 @@ export default function Navbar(props) {
             <AccountIcon className={classes.profileMenuIcon} /> Profile
           </MenuItem>
           <MenuItem
-            className={classNames(
+            className={clsx(
               classes.profileMenuItem,
               classes.headerMenuItem,
             )}
@@ -318,7 +318,7 @@ export default function Navbar(props) {
             <AccountIcon className={classes.profileMenuIcon} /> Tasks
           </MenuItem>
           <MenuItem
-            className={classNames(
+            className={clsx(
               classes.profileMenuItem,
               classes.headerMenuItem,
             )}

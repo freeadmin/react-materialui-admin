@@ -17,7 +17,7 @@ import {
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/core/styles";
 import tinycolor from "tinycolor2";
-import classnames from "classnames";
+import clsx from "clsx";
 // styles
 import useStyles from "./styles";
 
@@ -56,7 +56,7 @@ export default function Notification({ variant, ...props }) {
 
   return (
     <div
-      className={classnames(classes.notificationContainer, props.className, {
+      className={clsx(classes.notificationContainer, props.className, {
         [classes.notificationContained]: variant === "contained",
         [classes.notificationContainedShadowless]: props.shadowless,
       })}
@@ -68,7 +68,7 @@ export default function Notification({ variant, ...props }) {
       }}
     >
       <div
-        className={classnames(classes.notificationIconContainer, {
+        className={clsx(classes.notificationIconContainer, {
           [classes.notificationIconContainerContained]: variant === "contained",
           [classes.notificationIconContainerRounded]: variant === "rounded",
         })}
@@ -85,7 +85,7 @@ export default function Notification({ variant, ...props }) {
       </div>
       <div className={classes.messageContainer}>
         <Typography
-          className={classnames({
+          className={clsx({
             [classes.containedTypography]: variant === "contained",
           })}
           variant={props.typographyVariant}
