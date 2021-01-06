@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { TITLE } from "./constants";
 /**
  * Update the document title with provided string
  * @param titleOrFn can be a String or a function.
@@ -6,8 +7,9 @@ import { useEffect } from "react";
  */
 function useTitle(titleOrFn) {
   useEffect(() => {
-    document.title =
-      typeof titleOrFn === "function" ? titleOrFn(document.title) : titleOrFn;
+    document.title = `${
+      typeof titleOrFn === "function" ? titleOrFn() : titleOrFn
+    } - ${TITLE}`;
   });
 }
 

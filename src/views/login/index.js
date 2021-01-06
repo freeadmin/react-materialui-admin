@@ -27,7 +27,7 @@ import { useUserDispatch, loginUser } from "../../context/UserContext";
 import useTitle from "../../utils/title";
 
 function Login(props) {
-  useTitle((oTtile) => `Login - ${oTtile}`);
+  useTitle('Login');
   var classes = useStyles();
 
   // global

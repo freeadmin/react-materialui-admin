@@ -10,6 +10,9 @@ const lightenRate = 7.5;
 const darkenRate = 15;
 
 const themes = {
+  nprogress: {
+    color: '#fff',
+  },
   palette: {
     primary: {
       main: primary,

@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import clsx from "clsx";
-import { Box, Link } from "@material-ui/core";
+import { Box, Link, Button } from "@material-ui/core";
 //import Icon from "@mdi/react";
 
 //icons
@@ -19,7 +19,8 @@ import useStyles from "./styles";
 // components
 import Navbar from "../components/Navbar";
 import Copyright from "../components/Copyright";
-//import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/Sidebar";
+import Settingbar from "../components/Settingbar";
 
 // pages
 
@@ -28,11 +29,26 @@ import Copyright from "../components/Copyright";
 function Layout(props) {
   var classes = useStyles();
 
+  const [settingsOpen, setSettingsOpen] = React.useState(false);
+  const handleSettingsDrawerOpen = () => {
+    setSettingsOpen(true);
+  };
+  const handleSettingsDrawerClose = React.useCallback(() => {
+    setSettingsOpen(false);
+  }, []);
+
+  //handleSettingsDrawerOpen();
+
   return (
     <div className={classes.root}>
-      <Navbar history={props.history} />
+      <Navbar
+        history={props.history}
+        onOpenSettingBar={handleSettingsDrawerOpen}
+      />
+      <Sidebar />
       <div className={clsx(classes.content)}>
         <div className={classes.fakeToolbar} />
+        <Button variant="contained">Primary</Button>
         <Box
           mt={5}
           width={"100%"}
@@ -53,7 +69,7 @@ function Layout(props) {
               Flatlogic
             </Link>
           </Box>
-          <Box ml={5}> 
+          <Box ml={5}>
             <Link
               color={"primary"}
               href={"https://flatlogic.com/about"}
@@ -75,6 +91,7 @@ function Layout(props) {
           </Box>
         </Box>
       </div>
+      <Settingbar onClose={handleSettingsDrawerClose} open={settingsOpen} />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // components
 import Layout from "./layout/Layout";
+import FancyRoute from './components/FancyRoute';
 
 // pages
 import Error from "./views/error";
@@ -35,7 +36,7 @@ export default function App() {
 
   function PrivateRoute({ component, ...rest }) {
     return (
-      <Route
+      <FancyRoute
         {...rest}
         render={(props) =>
           isAuthenticated ? (
@@ -57,7 +58,7 @@ export default function App() {
 
   function PublicRoute({ component, ...rest }) {
     return (
-      <Route
+      <FancyRoute
         {...rest}
         render={(props) =>
           isAuthenticated ? (

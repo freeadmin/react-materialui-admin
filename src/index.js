@@ -7,18 +7,22 @@ import "typeface-roboto";
 import "./index.css";
 import App from "./App";
 import Themes from "./themes";
+import NProgressBar from "./components/NProgressBar";
+import { LayoutProvider } from "./context/LayoutContext";
 import { UserProvider } from "./context/UserContext";
 import reportWebVitals from "./reportWebVitals";
 
-
 ReactDOM.render(
   <React.StrictMode>
-    <UserProvider>
-      <ThemeProvider theme={Themes}>
-        <CssBaseline />
-        <App />
-      </ThemeProvider>
-    </UserProvider>
+    <LayoutProvider>
+      <UserProvider>
+        <ThemeProvider theme={Themes}>
+          <NProgressBar />
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+      </UserProvider>
+    </LayoutProvider>
   </React.StrictMode>,
   document.getElementById("root"),
 );

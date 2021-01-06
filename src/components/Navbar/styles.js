@@ -2,22 +2,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 
 export default makeStyles((theme) => ({
-  logotype: {
-    color: "white",
-    marginLeft: theme.spacing(2.5),
-    marginRight: theme.spacing(2.5),
-    whiteSpace: "nowrap",
-    [theme.breakpoints.down("xs")]: {
-      display: "none",
-    },
-  },
   appBar: {
-    width: "100vw",
+    //width: "100vw",
     zIndex: theme.zIndex.drawer + 1,
+    /*
     transition: theme.transitions.create(["margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-    }),
+    }),*/
   },
   toolbar: {
     paddingLeft: theme.spacing(2),
@@ -88,29 +80,31 @@ export default makeStyles((theme) => ({
   headerMenuItem: {
     "&:hover, &:focus": {
       backgroundColor: theme.palette.background.light,
-      // color: "white",
     },
   },
   headerMenuButton: {
-    marginLeft: theme.spacing(2),
-    padding: theme.spacing(0.5),
+    marginLeft: theme.spacing(1),
+    padding: theme.spacing(1),
+    "&:hover": {
+      color: theme.palette.common.white,
+    },
+    color: fade(theme.palette.common.white, 0.35),
   },
   headerMenuButtonSandwich: {
     marginLeft: 9,
     [theme.breakpoints.down("sm")]: {
       marginLeft: 0,
     },
-    padding: theme.spacing(0.5),
+    padding: theme.spacing(1),
   },
   headerMenuButtonCollapse: {
     marginRight: theme.spacing(2),
   },
   headerIcon: {
     fontSize: 28,
-    color: "rgba(255, 255, 255, 0.35)",
   },
   headerIconCollapse: {
-    color: "white",
+    color: theme.palette.common.white,
   },
   profileMenu: {
     minWidth: 265,
@@ -147,6 +141,7 @@ export default makeStyles((theme) => ({
   },
   messageNotificationBadgeColor: {
     backgroundColor: theme.palette.warning.main,
+    color: theme.palette.common.white,
   },
   messageNotificationSide: {
     display: "flex",
@@ -167,10 +162,11 @@ export default makeStyles((theme) => ({
   sendButtonIcon: {
     marginLeft: theme.spacing(2),
   },
-  purchaseBtn: {
+  docBtn: {
     [theme.breakpoints.down("sm")]: {
       display: "none",
     },
     marginRight: theme.spacing(3),
+    fontSize: "1rem",
   },
 }));

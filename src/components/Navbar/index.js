@@ -1,22 +1,24 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import {
   AppBar,
+  Box,
   Toolbar,
   IconButton,
-  InputBase,
   Menu,
   MenuItem,
   Fab,
   Link,
+  Tooltip,
 } from "@material-ui/core";
 import {
   Menu as MenuIcon,
   MailOutline as MailIcon,
   NotificationsNone as NotificationsIcon,
   Person as AccountIcon,
-  Search as SearchIcon,
   Send as SendIcon,
   ArrowBack as ArrowBackIcon,
+  Settings as SettingsIcon,
 } from "@material-ui/icons";
 import clsx from "clsx";
 
@@ -27,9 +29,16 @@ import useStyles from "./styles";
 import { Badge, Typography, Button } from "@material-ui/core";
 import Notification from "../Notification/Notification";
 import UserAvatar from "../UserAvatar/UserAvatar";
-
+import Search from "../Search";
 // context
 import { useUserDispatch, signOut } from "../../context/UserContext";
+
+// svg
+import { ReactComponent as FreeAdminLogo } from "../../assets/FreeAdmin.svg";
+
+// util
+import { TITLE, SOURCE_CODE_REPO } from "../../utils/constants";
+import { useTranslate } from "../../utils/i18n";
 
 const messages = [
   {
@@ -84,7 +93,10 @@ const notifications = [
   },
 ];
 
-export default function Navbar(props) {
+function Navbar(props) {
+  const { onOpenSettingBar } = props;
+
+  const t = useTranslate();
   var classes = useStyles();
 
   // global
@@ -96,7 +108,6 @@ export default function Navbar(props) {
   var [notificationsMenu, setNotificationsMenu] = useState(null);
   var [isNotificationsUnread, setIsNotificationsUnread] = useState(true);
   var [profileMenu, setProfileMenu] = useState(null);
-  var [isSearchOpen, setSearchOpen] = useState(false);
 
   return (
     <AppBar position="fixed" className={classes.appBar}>
@@ -112,57 +123,34 @@ export default function Navbar(props) {
           {false ? (
             <ArrowBackIcon
               classes={{
-                root: clsx(
-                  classes.headerIcon,
-                  classes.headerIconCollapse,
-                ),
+                root: clsx(classes.headerIcon, classes.headerIconCollapse),
               }}
             />
           ) : (
             <MenuIcon
               classes={{
-                root: clsx(
-                  classes.headerIcon,
-                  classes.headerIconCollapse,
-                ),
+                root: clsx(classes.headerIcon, classes.headerIconCollapse),
               }}
             />
           )}
         </IconButton>
-        <Typography variant="h6" weight="medium" className={classes.logotype}>
-          React MaterialUI Admin
+        <Box mr={2.5} display="flex" alignItems="center">
+          <FreeAdminLogo width={32} height={32} />
+        </Box>
+        <Typography variant="h4" className={classes.logotype}>
+          {TITLE}
         </Typography>
         <div className={classes.grow} />
         <Button
           component={Link}
-          href="https://flatlogic.com/templates/react-material-admin-full"
+          href={SOURCE_CODE_REPO}
           variant={"outlined"}
           color={"secondary"}
-          className={classes.purchaseBtn}
+          className={classes.docBtn}
         >
-          Unlock full version
+          {t("document")}
         </Button>
-        <div
-          className={clsx(classes.search, {
-            [classes.searchFocused]: isSearchOpen,
-          })}
-        >
-          <div
-            className={clsx(classes.searchIcon, {
-              [classes.searchIconOpened]: isSearchOpen,
-            })}
-            onClick={() => setSearchOpen(!isSearchOpen)}
-          >
-            <SearchIcon classes={{ root: classes.headerIcon }} />
-          </div>
-          <InputBase
-            placeholder="Search…"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-          />
-        </div>
+        <Search />
         <IconButton
           color="inherit"
           aria-haspopup="true"
@@ -175,7 +163,7 @@ export default function Navbar(props) {
         >
           <Badge
             badgeContent={isNotificationsUnread ? notifications.length : null}
-            classes={{ badge: classes.messageNotificationBadgeColor}}
+            classes={{ badge: classes.messageNotificationBadgeColor }}
           >
             <NotificationsIcon classes={{ root: classes.headerIcon }} />
           </Badge>
@@ -197,6 +185,15 @@ export default function Navbar(props) {
             <MailIcon classes={{ root: classes.headerIcon }} />
           </Badge>
         </IconButton>
+        <Tooltip title={t("layout.toggleSettings")} enterDelay={300}>
+          <IconButton
+            color="inherit"
+            className={classes.headerMenuButton}
+            onClick={onOpenSettingBar}
+          >
+            <SettingsIcon classes={{ root: classes.headerIcon }} />
+          </IconButton>
+        </Tooltip>
         <IconButton
           aria-haspopup="true"
           color="inherit"
@@ -218,21 +215,21 @@ export default function Navbar(props) {
         >
           <div className={classes.profileMenuUser}>
             <Typography variant="h4" weight="medium">
-              New Messages
+              {t("layout.newMessage")}
             </Typography>
             <Typography
               className={classes.profileMenuLink}
               component="a"
               color="secondary"
             >
-              {messages.length} New Messages
+              {messages.length} {t("layout.newMessage")}
             </Typography>
           </div>
           {messages.map((message) => (
             <MenuItem key={message.id} className={classes.messageNotification}>
               <div className={classes.messageNotificationSide}>
                 <UserAvatar color={message.variant} name={message.name} />
-                <Typography size="sm" color="text" colorBrightness="secondary">
+                <Typography size="sm" color="textPrimary">
                   {message.time}
                 </Typography>
               </div>
@@ -245,9 +242,7 @@ export default function Navbar(props) {
                 <Typography weight="medium" gutterBottom>
                   {message.name}
                 </Typography>
-                <Typography color="text" colorBrightness="secondary">
-                  {message.message}
-                </Typography>
+                <Typography color="textPrimary">{message.message}</Typography>
               </div>
             </MenuItem>
           ))}
@@ -257,7 +252,7 @@ export default function Navbar(props) {
             aria-label="Add"
             className={classes.sendMessageButton}
           >
-            Send New Message
+            {t("layout.sendNewMessage")}
             <SendIcon className={classes.sendButtonIcon} />
           </Fab>
         </Menu>
@@ -302,26 +297,17 @@ export default function Navbar(props) {
             </Typography>
           </div>
           <MenuItem
-            className={clsx(
-              classes.profileMenuItem,
-              classes.headerMenuItem,
-            )}
+            className={clsx(classes.profileMenuItem, classes.headerMenuItem)}
           >
             <AccountIcon className={classes.profileMenuIcon} /> Profile
           </MenuItem>
           <MenuItem
-            className={clsx(
-              classes.profileMenuItem,
-              classes.headerMenuItem,
-            )}
+            className={clsx(classes.profileMenuItem, classes.headerMenuItem)}
           >
             <AccountIcon className={classes.profileMenuIcon} /> Tasks
           </MenuItem>
           <MenuItem
-            className={clsx(
-              classes.profileMenuItem,
-              classes.headerMenuItem,
-            )}
+            className={clsx(classes.profileMenuItem, classes.headerMenuItem)}
           >
             <AccountIcon className={classes.profileMenuIcon} /> Messages
           </MenuItem>
@@ -339,3 +325,10 @@ export default function Navbar(props) {
     </AppBar>
   );
 }
+
+Navbar.propType = {
+  classes: PropTypes.object.isRequired,
+  onOpenSettingBar: PropTypes.func.isRequired,
+};
+
+export default Navbar;
