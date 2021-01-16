@@ -62,17 +62,7 @@ function Layout(props) {
           <Box ml={5}>
             <Link
               color={"primary"}
-              href={"https://flatlogic.com/"}
-              target={"_blank"}
-              className={classes.link}
-            >
-              Flatlogic
-            </Link>
-          </Box>
-          <Box ml={5}>
-            <Link
-              color={"primary"}
-              href={"https://flatlogic.com/about"}
+              href={"https://github.com/freeadmin/react-materialui-admin"}
               target={"_blank"}
               className={classes.link}
             >
@@ -82,7 +72,7 @@ function Layout(props) {
           <Box ml={5}>
             <Link
               color={"primary"}
-              href={"https://flatlogic.com/blog"}
+              href={"https://github.com/freeadmin/react-materialui-admin"}
               target={"_blank"}
               className={classes.link}
             >

@@ -143,6 +143,10 @@ export default makeStyles((theme) => ({
     backgroundColor: theme.palette.warning.main,
     color: theme.palette.common.white,
   },
+  mailBadgeColor: {
+    backgroundColor: theme.palette.error.light,
+    color: theme.palette.common.white,
+  },
   messageNotificationSide: {
     display: "flex",
     flexDirection: "column",

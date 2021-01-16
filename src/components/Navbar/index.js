@@ -179,7 +179,7 @@ function Navbar(props) {
         >
           <Badge
             badgeContent={isMailsUnread ? messages.length : null}
-            color="secondary"
+            classes={{ badge: classes.mailBadgeColor }}
           >
             <MailIcon classes={{ root: classes.headerIcon }} />
           </Badge>
@@ -290,7 +290,7 @@ function Navbar(props) {
               className={classes.profileMenuLink}
               component="a"
               color="primary"
-              href="https://flatlogic.com"
+              href="https://github.com/freeadmin/react-materialui-admin"
             >
               Flalogic.com
             </Typography>
