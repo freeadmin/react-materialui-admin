@@ -18,16 +18,17 @@ import Copyright from "../../components/Copyright";
 import useStyles from "./styles";
 
 // logo
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/FreeAdmin.svg";
 import google from "../../assets/google.svg";
 
 // context
 import { useUserDispatch, loginUser } from "../../context/UserContext";
 
+import { TITLE } from "../../utils/constants";
 import useTitle from "../../utils/title";
 
 function Login(props) {
-  useTitle('Login');
+  useTitle("Login");
   var classes = useStyles();
 
   // global
@@ -45,7 +46,7 @@ function Login(props) {
     <Grid container className={classes.container}>
       <div className={classes.logotypeContainer}>
         <img src={logo} alt="logo" className={classes.logotypeImage} />
-        <Typography className={classes.logotypeText}>Material Admin</Typography>
+        <Typography className={classes.logotypeText}>{TITLE}</Typography>
       </div>
       <div className={classes.formContainer}>
         <div className={classes.form}>

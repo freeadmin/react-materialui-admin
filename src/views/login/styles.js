@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   container: {
     height: "100vh",
     width: "100vw",
@@ -33,7 +33,7 @@ export default makeStyles(theme => ({
   logotypeText: {
     color: "white",
     fontWeight: 500,
-    fontSize: 84,
+    fontSize: 68,
     [theme.breakpoints.down("md")]: {
       fontSize: 48,
     },
