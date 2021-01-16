@@ -144,7 +144,6 @@ function Navbar(props) {
         <Button
           component={Link}
           href={SOURCE_CODE_REPO}
-          color="white"
           className={classes.docBtn}
         >
           {t("document")}
@@ -213,10 +212,11 @@ function Navbar(props) {
           disableAutoFocusItem
         >
           <div className={classes.profileMenuUser}>
-            <Typography variant="h4" weight="medium">
+            <Typography variant="h6" weight="medium">
               {t("layout.newMessage")}
             </Typography>
             <Typography
+              variant="body2"
               className={classes.profileMenuLink}
               component="a"
               color="secondary"
@@ -228,7 +228,7 @@ function Navbar(props) {
             <MenuItem key={message.id} className={classes.messageNotification}>
               <div className={classes.messageNotificationSide}>
                 <UserAvatar color={message.variant} name={message.name} />
-                <Typography size="sm" color="textPrimary">
+                <Typography variant="body2" color="textPrimary">
                   {message.time}
                 </Typography>
               </div>
@@ -238,10 +238,12 @@ function Navbar(props) {
                   classes.messageNotificationBodySide,
                 )}
               >
-                <Typography weight="medium" gutterBottom>
+                <Typography variant="body1" weight="medium" gutterBottom>
                   {message.name}
                 </Typography>
-                <Typography color="textPrimary">{message.message}</Typography>
+                <Typography variant="body2" color="textPrimary">
+                  {message.message}
+                </Typography>
               </div>
             </MenuItem>
           ))}
@@ -269,7 +271,7 @@ function Navbar(props) {
               onClick={() => setNotificationsMenu(null)}
               className={classes.headerMenuItem}
             >
-              <Notification {...notification} typographyVariant="inherit" />
+              <Notification {...notification} typographyVariant="body2" />
             </MenuItem>
           ))}
         </Menu>
@@ -283,35 +285,40 @@ function Navbar(props) {
           disableAutoFocusItem
         >
           <div className={classes.profileMenuUser}>
-            <Typography variant="h4" weight="medium">
+            <Typography variant="h6" weight="medium">
               John Smith
             </Typography>
             <Typography
+              variant="body2"
               className={classes.profileMenuLink}
               component="a"
               color="primary"
               href="https://github.com/freeadmin/react-materialui-admin"
             >
-              Flalogic.com
+              FreeAdmin
             </Typography>
           </div>
           <MenuItem
             className={clsx(classes.profileMenuItem, classes.headerMenuItem)}
           >
-            <AccountIcon className={classes.profileMenuIcon} /> Profile
+            <AccountIcon className={classes.profileMenuIcon} />{" "}
+            <Typography variant="body2">Profile</Typography>
           </MenuItem>
           <MenuItem
             className={clsx(classes.profileMenuItem, classes.headerMenuItem)}
           >
-            <AccountIcon className={classes.profileMenuIcon} /> Tasks
+            <AccountIcon className={classes.profileMenuIcon} />{" "}
+            <Typography variant="body2">Tasks</Typography>
           </MenuItem>
           <MenuItem
             className={clsx(classes.profileMenuItem, classes.headerMenuItem)}
           >
-            <AccountIcon className={classes.profileMenuIcon} /> Messages
+            <AccountIcon className={classes.profileMenuIcon} />{" "}
+            <Typography variant="body2">Messages</Typography>
           </MenuItem>
           <div className={classes.profileMenuUser}>
             <Typography
+              variant="body2"
               className={classes.profileMenuLink}
               color="primary"
               onClick={() => signOut(userDispatch, props.history)}

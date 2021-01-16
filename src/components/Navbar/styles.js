@@ -112,7 +112,7 @@ export default makeStyles((theme) => ({
   profileMenuUser: {
     display: "flex",
     flexDirection: "column",
-    padding: theme.spacing(2),
+    padding: theme.spacing(1, 2),
   },
   profileMenuItem: {
     color: theme.palette.text.hint,
@@ -125,7 +125,6 @@ export default makeStyles((theme) => ({
     },
   },
   profileMenuLink: {
-    fontSize: 16,
     textDecoration: "none",
     "&:hover": {
       cursor: "pointer",
