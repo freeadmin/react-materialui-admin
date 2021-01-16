@@ -168,5 +168,6 @@ export default makeStyles((theme) => ({
     },
     marginRight: theme.spacing(3),
     fontSize: "1rem",
+    color: theme.palette.error.light,
   },
 }));

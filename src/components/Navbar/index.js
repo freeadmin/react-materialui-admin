@@ -144,8 +144,7 @@ function Navbar(props) {
         <Button
           component={Link}
           href={SOURCE_CODE_REPO}
-          variant={"outlined"}
-          color={"secondary"}
+          color="white"
           className={classes.docBtn}
         >
           {t("document")}
