@@ -23,11 +23,6 @@ import SidebarLink from "./components/SidebarLink/SidebarLink";
 import Dot from "./components/Dot";
 
 // context
-import {
-  useLayoutState,
-  useLayoutDispatch,
-  toggleSidebar,
-} from "../../context/LayoutContext";
 
 const structure = [
   { id: 0, label: "Dashboard", link: "/app/dashboard", icon: <HomeIcon /> },
@@ -82,13 +77,13 @@ const structure = [
   },
 ];
 
-function Sidebar({ location }) {
+function Sidebar(props) {
   var classes = useStyles();
   var theme = useTheme();
 
+  const { location, onToggleSidebar, isSidebarOpened = false } = props;
+
   // global
-  var { isSidebarOpened } = useLayoutState();
-  var layoutDispatch = useLayoutDispatch();
 
   // local
   var [isPermanent, setPermanent] = useState(true);
@@ -118,7 +113,7 @@ function Sidebar({ location }) {
     >
       <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>
-        <IconButton onClick={() => toggleSidebar(layoutDispatch)}>
+        <IconButton onClick={() => onToggleSidebar()}>
           <ArrowBackIcon
             classes={{
               root: clsx(classes.headerIcon, classes.headerIconCollapse),

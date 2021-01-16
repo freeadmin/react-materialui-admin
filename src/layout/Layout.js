@@ -37,6 +37,13 @@ function Layout(props) {
     setSettingsOpen(false);
   }, []);
 
+  const [sidebarOpen, setSidebarOpen] = React.useState(true);
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+  const handleSidebarOpen = () => setSidebarOpen(true);
+  const handleSidebarClose = () => setSidebarOpen(false);
+
   //handleSettingsDrawerOpen();
 
   return (
@@ -44,8 +51,9 @@ function Layout(props) {
       <Navbar
         history={props.history}
         onOpenSettingBar={handleSettingsDrawerOpen}
+        onToggleSidebar={toggleSidebar}
       />
-      <Sidebar />
+      <Sidebar isSidebarOpened={sidebarOpen} onToggleSidebar={toggleSidebar} />
       <div className={clsx(classes.content)}>
         <div className={classes.fakeToolbar} />
         <Button variant="contained">Primary</Button>

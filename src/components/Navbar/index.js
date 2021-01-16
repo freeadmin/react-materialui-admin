@@ -17,7 +17,6 @@ import {
   NotificationsNone as NotificationsIcon,
   Person as AccountIcon,
   Send as SendIcon,
-  ArrowBack as ArrowBackIcon,
   Settings as SettingsIcon,
 } from "@material-ui/icons";
 import clsx from "clsx";
@@ -94,7 +93,7 @@ const notifications = [
 ];
 
 function Navbar(props) {
-  const { onOpenSettingBar } = props;
+  const { onOpenSettingBar, onToggleSidebar } = props;
 
   const t = useTranslate();
   var classes = useStyles();
@@ -114,25 +113,17 @@ function Navbar(props) {
       <Toolbar className={classes.toolbar}>
         <IconButton
           color="inherit"
-          onClick={() => {}}
+          onClick={() => onToggleSidebar()}
           className={clsx(
             classes.headerMenuButtonSandwich,
             classes.headerMenuButtonCollapse,
           )}
         >
-          {false ? (
-            <ArrowBackIcon
-              classes={{
-                root: clsx(classes.headerIcon, classes.headerIconCollapse),
-              }}
-            />
-          ) : (
-            <MenuIcon
-              classes={{
-                root: clsx(classes.headerIcon, classes.headerIconCollapse),
-              }}
-            />
-          )}
+          <MenuIcon
+            classes={{
+              root: clsx(classes.headerIcon, classes.headerIconCollapse),
+            }}
+          />
         </IconButton>
         <Box mr={2.5} display="flex" alignItems="center">
           <FreeAdminLogo width={32} height={32} />
@@ -335,6 +326,7 @@ function Navbar(props) {
 Navbar.propType = {
   classes: PropTypes.object.isRequired,
   onOpenSettingBar: PropTypes.func.isRequired,
+  onToggleSidebar: PropTypes.func.isRequired,
 };
 
 export default Navbar;
