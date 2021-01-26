@@ -21,9 +21,9 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,5 +43,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@craco/craco": "^6.0.0",
+    "body-parser": "^1.19.0",
+    "chalk": "^4.1.0",
+    "chokidar": "^3.5.1",
+    "mockjs": "^1.1.0"
   }
 }
