@@ -1,4 +1,4 @@
-const port = process.env.port || process.env.npm_config_port || 3000; // dev port
+const port = process.env.port || process.env.npm_config_port || 1192; // dev port
 
 module.exports = {
   webpack: {},
