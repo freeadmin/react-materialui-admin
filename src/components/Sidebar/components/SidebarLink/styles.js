@@ -6,6 +6,8 @@ export default makeStyles(theme => ({
     "&:hover, &:focus": {
       backgroundColor: theme.palette.background.light,
     },
+    paddingLeft: 0,
+    paddingRight: 0,
   },
   linkActive: {
     backgroundColor: theme.palette.background.light,
