@@ -3,7 +3,7 @@ const port = process.env.port || process.env.npm_config_port || 1192; // dev por
 module.exports = {
   webpack: {},
   devServer: {
-    host: "localhost",
+    host: "0.0.0.0",
     port: port,
     overlay: {
       warnings: false,
