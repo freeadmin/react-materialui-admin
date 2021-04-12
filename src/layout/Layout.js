@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import clsx from "clsx";
 import { Box, Link, Button } from "@material-ui/core";
 //import Icon from "@mdi/react";
@@ -23,7 +23,7 @@ import Sidebar from "../components/Sidebar";
 import Settingbar from "../components/Settingbar";
 
 // pages
-
+import Dashboard from "../views/dashboard";
 // context
 
 function Layout(props) {
@@ -56,7 +56,9 @@ function Layout(props) {
       <Sidebar isSidebarOpened={sidebarOpen} onToggleSidebar={toggleSidebar} />
       <div className={clsx(classes.content)}>
         <div className={classes.fakeToolbar} />
-        <Button variant="contained">Primary</Button>
+        <Switch>
+          <Route path="/app/dashboard" component={Dashboard} />
+        </Switch>
         <Box
           mt={5}
           width={"100%"}
